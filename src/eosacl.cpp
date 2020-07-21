@@ -35,9 +35,6 @@ ACTION eosacl::sharekey(name sender, name recipient, uint8_t lock_id, uint8_t ro
 
   // Modify the lock table entry, adding the recipient to the lock.admins vector
   _locks.modify(lock, sender, [&](auto& modified_lock) { // sender is paying for the storage
-    //struct lock& modified_lock_detials = modified_lock.lock_details;
-    //vector<name>& admins = modified_lock_detials.admins;
-    //admins.insert(admins.end(), recipient);
 
     // update the lock table lock's entry with the new user, making the sender pay for it
     _addUserToLock(modified_lock.lock_details, recipient, role);
